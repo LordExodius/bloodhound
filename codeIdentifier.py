@@ -1,3 +1,5 @@
+# Functions to help identify what shipping company is being used
+
 def identify(code):
     possible = checkLength(code)
 
