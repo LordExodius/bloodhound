@@ -1,6 +1,7 @@
 # Functions to help identify what shipping company is being used
 
 def identify(code):
+    code = str(code)
     possible = checkLength(code)
 
     if len(possible) == 0:
@@ -11,16 +12,13 @@ def identify(code):
 
     elif len(possible) > 1:
         if "USPS" in possible: 
-            if checkUSPS(code):
-                return "USPS"
-            else:
+            if not checkUSPS(code):
                 possible.remove("USPS")
-        
+                
         if "UPS" in possible:
-            if checkUPS(code):
-                return "UPS"
-            else:
+            if not checkUPS(code):
                 possible.remove("UPS")
+                
     
     return possible
 
@@ -97,3 +95,13 @@ def checkUPS(code):
         else:
             print(f"Correct format, but incorrect check digit, should be {checkDigit}, found {code[len(code) - 1]}")
             return True
+
+"""
+def checkFedEx(code):
+    checkCode = code[:10]
+    runningTotal = 0
+
+    for i in range(len(checkCode)):
+"""
+        #third digit (i + 1 mod 3 == 0)
+        #second digit (i + 1 mod 2 == 0)
