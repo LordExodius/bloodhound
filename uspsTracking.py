@@ -1,3 +1,7 @@
+# Oscar Yu (LordExodius)
+# May 28th 2021
+# USPS tracking module for bloodhound
+
 from usps import USPSApi
 from dotenv import load_dotenv
 from pprint import pprint
@@ -20,9 +24,12 @@ def trackUSPS(trackNumber):
     if trackError is None:
         trackSummary = trackInfo.get("TrackSummary")
         trackDetail = trackInfo.get("TrackDetail")
+
+        return [True, [trackSummary, trackDetail]]
+
         print(f"Tracking Summary: {trackSummary}\n")
         print("Tracking Details:")
         pprint(trackDetail)
 
     else:
-        print("TrackError:", trackError.get("Description"))
+        return [False, ("TrackError:", trackError.get("Description"))]

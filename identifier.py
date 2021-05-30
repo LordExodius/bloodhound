@@ -1,4 +1,6 @@
-# Functions to help identify what shipping company is being used
+# Oscar Yu (LordExodius)
+# May 28th 2021
+# Module with functions to help identify what shipping company is being used
 
 def identify(code):
     code = str(code)
@@ -8,7 +10,7 @@ def identify(code):
         return False
     
     elif len(possible) == 1:
-        return possible[0]
+        return possible
 
     elif len(possible) > 1:
         if "USPS" in possible: 
