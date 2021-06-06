@@ -9,6 +9,8 @@ import os
 
 from usps.usps import TrackingInfo
 
+print("USPS MODULE ACTIVE")
+
 load_dotenv()
 USPSuser = os.getenv("USPSuser")
 usps = USPSApi(USPSuser)
@@ -26,10 +28,6 @@ def trackUSPS(trackNumber):
         trackDetail = trackInfo.get("TrackDetail")
 
         return [True, [trackSummary, trackDetail]]
-
-        print(f"Tracking Summary: {trackSummary}\n")
-        print("Tracking Details:")
-        pprint(trackDetail)
 
     else:
         return [False, ("TrackError:", trackError.get("Description"))]

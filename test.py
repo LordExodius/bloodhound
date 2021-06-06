@@ -1,5 +1,7 @@
 # test file
 from uspsTracking import trackUSPS
+from dhlTracking import trackDHL
+from canpostTracking import trackCanPost
 from identifier import checkUPS, identify
 from dotenv import load_dotenv
 import os
@@ -11,6 +13,7 @@ FEDEX3 = os.getenv("fedex3")
 DHL = os.getenv("dhl1")
 USPS1 = os.getenv("usps1")
 USPS2 = os.getenv("usps2")
+CANPOST1 = os.getenv("canpost1")
 
 print(code[2:])
 print(code[len(code) - 1])
@@ -24,6 +27,9 @@ print("DHL:", identify(DHL))
 print("USPS:", identify(USPS1))
 print("USPS:", identify(USPS2))
 
-for i in range(3):
-    trackingNumber = input("Enter Tracking Number: ")
-    trackUSPS(trackingNumber)
+#print(trackDHL("ASHDGLHSLDKGH")[0])
+#print(trackDHL(DHL)[0])
+
+print(trackCanPost(CANPOST1)[1])
+
+
