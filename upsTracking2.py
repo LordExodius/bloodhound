@@ -21,8 +21,8 @@ def trackUPS(trackNumber):
         "transId" : "111111",
         "transactionSrc" : "bloodhound",
         "AccessLicenseNumber" : accessKey,
-        "Username" : userID,
-        "Password" : password,
+        #"Username" : userID,
+        #"Password" : password,
         "Content-Type" : "application/json",
         "Accept" : "application/json"
     }
@@ -31,7 +31,7 @@ def trackUPS(trackNumber):
     print(response.status_code)
 
     trackResponse = json.loads(response.content.decode("ASCII"))
-    if "warnings" in trackResponse:
+    if "warnings" in trackResponse: #check if valid tracking number
         return [False, trackResponse]
 
     else:
